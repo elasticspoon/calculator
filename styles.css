@@ -1,0 +1,29 @@
+body {
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.calc.container {
+    background-color: black;
+    width: 400px;
+    border: 5px solid blue;
+}
+.screen {
+    background-color: white;
+    text-align: right;
+}
+.btn-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+.btn {
+    background-color: white;
+    border: 2px solid grey;
+}
+.btn:hover {
+    background-color: black;
+    color: white;
+}
+.btn.number.zero {
+    grid-column: 1 / 3;
+}
