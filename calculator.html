@@ -10,7 +10,7 @@
     <div class="calc-container">
         <div class="screen">0</div>
         <button class="btn function clear" data-key="clear">AC</button>
-        <button class="btn function pos-neg" data-key="negateVal">+/-</button>
+        <button class="btn function" data-key="negateVal">+/-</button>
         <button class="btn function-calc" data-key="remainder">%</button>
         <button class="btn function-calc" data-key="divide">/</button>
 
@@ -68,9 +68,10 @@
                     screen.textContent = "ERROR";
                     return;
                 }
+                let sanitizedResult = sanitizeNum(result);
                 dataHolderObject["operator"] = functionHolderObject[this.dataset.key];
-                dataHolderObject["valB"] = result;
-                currentScreenText = result;
+                dataHolderObject["valB"] = sanitizedResult;
+                currentScreenText = sanitizedResult;
                 updateScreen();
                 dataHolderObject["valA"] = undefined;
                 currentScreenText = undefined;
@@ -91,8 +92,13 @@
             functionHolderObject[this.dataset.key]();
         }
         function pressNumberKey() {
-            currentScreenText = currentScreenText == undefined || currentScreenText == "0" ?
-                this.dataset.key : currentScreenText += this.dataset.key;
+            if (currentScreenText == undefined || currentScreenText == "0") {
+                currentScreenText = this.dataset.key;
+            }
+            else if (currentScreenText.split("").length >= 8) {} 
+            else {
+                currentScreenText += this.dataset.key;
+            }
             updateScreen();
         }
         function clearScreen() {
@@ -120,6 +126,17 @@
         }
         function equals(a, b) {
             return b;
+        }
+        function sanitizeNum(result){
+            if (result >  99999999 || result < .0000001) { return result.toExponential(3);}
+            else if (result.toString().length > 8) {
+                /* const MAX_SCREEN_LENGTH = 8;
+                let resultArr= result.toString().split("");
+                console.log(resultArr);
+                console.log(MAX_SCREEN_LENGTH - resultArr.indexOf(".")); */
+                return result.toString().substr(0, 8);
+            }
+            else { return result;}
         }
 
 
