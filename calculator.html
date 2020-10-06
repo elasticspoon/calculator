@@ -7,33 +7,31 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="calc container">
-        <div class="screen container">0</div>
-        <div class="btn-container">
-            <button class="btn function clear" data-key="clear">AC</button>
-            <button class="btn function pos-neg" data-key="negateVal">+/-</button>
-            <button class="btn function-calc" data-key="remainder">%</button>
-            <button class="btn function-calc" data-key="divide">/</button>
+    <div class="calc-container">
+        <div class="screen">0</div>
+        <button class="btn function clear" data-key="clear">AC</button>
+        <button class="btn function pos-neg" data-key="negateVal">+/-</button>
+        <button class="btn function-calc" data-key="remainder">%</button>
+        <button class="btn function-calc" data-key="divide">/</button>
 
-            <button class="btn number seven" data-key="7">7</button>
-            <button class="btn number eight" data-key="8">8</button>
-            <button class="btn number nine" data-key="9">9</button>
-            <button class="btn function-calc" data-key="multiply">*</button>
+        <button class="btn number seven" data-key="7">7</button>
+        <button class="btn number eight" data-key="8">8</button>
+        <button class="btn number nine" data-key="9">9</button>
+        <button class="btn function-calc" data-key="multiply">*</button>
 
-            <button class="btn number four" data-key="4">4</button>
-            <button class="btn number five" data-key="5">5</button>
-            <button class="btn number six" data-key="6">6</button>
-            <button class="btn function-calc" data-key="minus">-</button>
+        <button class="btn number four" data-key="4">4</button>
+        <button class="btn number five" data-key="5">5</button>
+        <button class="btn number six" data-key="6">6</button>
+        <button class="btn function-calc" data-key="minus">-</button>
 
-            <button class="btn number one" data-key="1">1</button>
-            <button class="btn number two" data-key="2">2</button>
-            <button class="btn number three" data-key="3">3</button>
-            <button class="btn function-calc" data-key="add">+</button>
+        <button class="btn number one" data-key="1">1</button>
+        <button class="btn number two" data-key="2">2</button>
+        <button class="btn number three" data-key="3">3</button>
+        <button class="btn function-calc" data-key="add">+</button>
 
-            <button class="btn number zero" data-key="0">0</button>
-            <button class="btn function" data-key="decim">.</button>
-            <button class="btn function-calc" data-key="equals">=</button>
-        </div>
+        <button class="btn number zero" data-key="0">0</button>
+        <button class="btn function" data-key="decim">.</button>
+        <button class="btn function-calc" data-key="equals">=</button>
     </div>
     <script>
         const numButtons = document.querySelectorAll('.number');
