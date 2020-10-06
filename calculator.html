@@ -31,7 +31,7 @@
             <button class="btn function-calc" data-key="add">+</button>
 
             <button class="btn number zero" data-key="0">0</button>
-            <button class="btn function decimal">.</button>
+            <button class="btn function" data-key="decim">.</button>
             <button class="btn function-calc" data-key="equals">=</button>
         </div>
     </div>
@@ -44,7 +44,7 @@
         let currentScreenText = undefined;
 
         functionButtons.forEach(button => button.addEventListener('click', pressFunctionKey));
-        calculationTriggerBtns.forEach(button => button.addEventListener('click', operate));4
+        calculationTriggerBtns.forEach(button => button.addEventListener('click', operate));
 
         numButtons.forEach(button => button.addEventListener('click', pressNumberKey));
 
@@ -56,7 +56,9 @@
             "add": add,
             "minus": minus,
             "clear": reset,
-            "equals": '',
+            "equals": equals,
+            'decim': addDecimal,
+
         };
         const dataHolderObject = {};
 
@@ -72,6 +74,8 @@
                 dataHolderObject["valB"] = result;
                 currentScreenText = result;
                 updateScreen();
+                dataHolderObject["valA"] = undefined;
+                currentScreenText = undefined;
 
             } else if (dataHolderObject["valB"] && dataHolderObject["operator"]){
                 dataHolderObject["operator"] = functionHolderObject[this.dataset.key];
@@ -95,6 +99,7 @@
         }
         function clearScreen() {
             currentScreenText = undefined;
+            functionHolderObject.decimal = false;
             updateScreen();
         }
         function reset() {
@@ -109,8 +114,18 @@
                 currentScreenText : currentScreenText * -1;
             updateScreen();
         }
+        function addDecimal() {
+            if (!currentScreenText.split("").some(key => key == ".")) {
+                currentScreenText += ".";
+                updateScreen();
+            }
+        }
+        function equals(a, b) {
+            return b;
+        }
 
-        function equals() { return undefined;}
+
+
         function add(a, b) { return a - (-b); }
         function minus(a, b) {return a - b; }
         function multiply(a, b) {return a * b; }
